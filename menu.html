@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Меню — Маякоffский</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+<header>
+  <div class="container header-content">
+    <h1>Маякоffский</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="menu.html" class="active">Меню</a></li>
+        <li><a href="index.html#about">О нас</a></li>
+        <li><a href="index.html#location">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="container">
+  <h2>Наше меню</h2>
+  <p>Выберите категорию или блюдо</p>
+
+  <div class="menu-grid">
+    <div class="menu-card" data-item="Американо" data-price="190">
+      <div class="card-image">☕</div>
+      <div class="card-content">
+        <h3>Американо</h3>
+        <p>Классический черный кофе, приготовленный путем пропускания горячей воды через молотые кофейные зерна. Идеальный баланс крепости и аромата.</p>
+        <div class="price">190 ₽</div>
+        <button class="buy-btn">Выбрать</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-item="Черный чай" data-price="160">
+      <div class="card-image">🍵</div>
+      <div class="card-content">
+        <h3>Черный чай</h3>
+        <p>Насыщенный черный чай с богатым вкусом и ароматом. Подается с лимоном или молоком по вашему выбору.</p>
+        <div class="price">160 ₽</div>
+        <button class="buy-btn">Выбрать</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-item="Чизкейк" data-price="250">
+      <div class="card-image">🍰</div>
+      <div class="card-content">
+        <h3>Чизкейк</h3>
+        <p>Нежный чизкейк с песочной основой и сливочной начинкой. Легкий и воздушный десерт, который тает во рту.</p>
+        <div class="price">250 ₽</div>
+        <button class="buy-btn">Выбрать</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-item="Сэндвич" data-price="220">
+      <div class="card-image">🥪</div>
+      <div class="card-content">
+        <h3>Сэндвич</h3>
+        <p>Свежий сэндвич с индейкой, сыром, листьями салата и соусом. Идеальный перекус в любое время дня.</p>
+        <div class="price">220 ₽</div>
+        <button class="buy-btn">Выбрать</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-item="Булочка с маком" data-price="120">
+      <div class="card-image">🥐</div>
+      <div class="card-content">
+        <h3>Булочка с маком</h3>
+        <p>Ароматная свежая булочка с маковой начинкой. Нежная выпечка с хрустящей корочкой и сладкой сердцевиной.</p>
+        <div class="price">120 ₽</div>
+        <button class="buy-btn">Выбрать</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-item="Эклер с шоколадом" data-price="180">
+      <div class="card-image">🧁</div>
+      <div class="card-content">
+        <h3>Эклер с шоколадом</h3>
+        <p>Воздушное заварное тесто с нежным кремом и глазурью из черного шоколада. Классический французский десерт.</p>
+        <div class="price">180 ₽</div>
+        <button class="buy-btn">Выбрать</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div id="modal-bg">
+  <div class="modal">
+    <h2 id="modal-title"></h2>
+    <p>Цена: <span id="modal-price"></span> ₽</p>
+
+    <div style="margin:1.5rem 0;">
+      <label style="font-weight: 600;">Количество:</label>
+      <input type="number" id="qty" value="1" min="1" style="display:block;margin-top:.5rem;padding:.8rem;width:100px;border-radius:8px;border:1px solid #ddd;">
+    </div>
+
+    <button id="add-cart" class="add-cart-btn">Добавить в корзину</button>
+
+    <div id="close" class="close">Закрыть</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Маякоffский. Все права защищены.</p>
+</footer>
+
+<script src="menu.js"></script>
+</body>
+</html>

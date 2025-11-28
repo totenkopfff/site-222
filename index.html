@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маякоffский — кофейня</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fefaf0;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #8a5f35;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #6d4b29;
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #3c2f2d;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #5a4a42;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8a5f35;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #3c2f2d;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #8a5f35;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(60, 47, 45, 0.8), rgba(60, 47, 45, 0.8)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #3c2f2d;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: #5a4a42;
+            line-height: 1.7;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        /* Menu Preview */
+        .menu-preview {
+            padding: 100px 0;
+            background: #f8f5f0;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #3c2f2d;
+        }
+        
+        .menu-item-content p {
+            color: #5a4a42;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-weight: 600;
+            color: #8a5f35;
+            font-size: 1.3rem;
+        }
+        
+        /* Location */
+        .location {
+            padding: 100px 0;
+        }
+        
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .location-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #3c2f2d;
+        }
+        
+        .location-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #5a4a42;
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #3c2f2d;
+            color: #e8e1d6;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #f8f5f0;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #c9b9a8;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #f8f5f0;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #5a4a42;
+            color: #c9b9a8;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content, .location-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo"><i class="fas fa-coffee"></i> Маякоffский</a>
+            <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="menu.html">Меню</a></li>
+                    <li><a href="#location">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Атмосфера, вкус и стиль</h1>
+            <p>Кофейня “Маякоffский” — место, где аромат встречается с искусством, а каждый гость становится частью истории.</p>
+            <a href="menu.html" class="btn">Меню</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>О нас</h2>
+                <p>Мы создаем атмосферу теплоты и творчества в самом сердце Майкопа.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Кофейня с настроением</h3>
+                    <p>“Маякоffский” — это место, вдохновлённое культурой, диалогами и живой энергетикой творчества.</p>
+                    <p>Мы используем только свежие зерна высшего качества, а напитки готовят бариста, прошедшие профессиональное обучение.</p>
+                    <a href="#about" class="btn" style="margin-top: 20px;">Как нас найти</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="Кофейня Маякоffский">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview -->
+    <section class="menu-preview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Популярное</h2>
+                <p>Наши гости выбирают это чаще всего</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?auto=format&fit=crop&w=600&q=80" alt="Американо">
+                    <div class="menu-item-content">
+                        <h3>Американо</h3>
+                        <p>Классический черный кофе</p>
+                        <div class="price">190 ₽</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80" alt="Чизкейк">
+                    <div class="menu-item-content">
+                        <h3>Чизкейк</h3>
+                        <p>Нежный с песочной и сливочной начинкой</p>
+                        <div class="price">250 ₽</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1567234669003-dce7a7a88821?auto=format&fit=crop&w=600&q=80" alt="Сэндвич">
+                    <div class="menu-item-content">
+                        <h3>Сэндвич</h3>
+                        <p>Идеальный перекус в любое время дня</p>
+                        <div class="price">220 ₽</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px;">
+                <a href="menu.html" class="btn">Все меню</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location" id="location">
+        <div class="container">
+            <div class="section-title">
+                <h2>Где мы находимся</h2>
+                <p>Приходите в гости — у нас вкусно и уютно</p>
+            </div>
+
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Адрес</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Майкоп, ул. Краснооктябрьская, 47</p>
+                    <p><i class="fas fa-clock"></i> Ежедневно: 08:00 – 22:00</p>
+                    <p><i class="fas fa-phone"></i> +7 (900) 000-00-00</p>
+                    <p><i class="fas fa-envelope"></i> mayakoffsky@cafe.ru</p>
+                </div>
+
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps?q=Майкоп,+Краснооктябрьская+47&output=embed" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Маякоffский</h3>
+                    <p>Атмосферная кофейня в центре Майкопа.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <a href="#home">Главная</a>
+                    <a href="#about">О нас</a>
+                    <a href="menu.html">Меню</a>
+                    <a href="#location">Контакты</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Часы работы</h3>
+                    <p>Ежедневно: 08:00 – 22:00</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p>г. Майкоп, ул. Краснооктябрьская, 47</p>
+                    <p>mayakoffsky@cafe.ru</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Маякоffский. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Простой скрипт для мобильного меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', function() {
+                if (nav.style.display === 'flex') {
+                    nav.style.display = 'none';
+                } else {
+                    nav.style.display = 'flex';
+                    nav.style.flexDirection = 'column';
+                    nav.style.position = 'absolute';
+                    nav.style.top = '100%';
+                    nav.style.left = '0';
+                    nav.style.right = '0';
+                    nav.style.background = 'white';
+                    nav.style.padding = '20px';
+                    nav.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+                }
+            });
+            
+            // Плавная прокрутка для якорных ссылок
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Закрыть мобильное меню после клика
+                        if (window.innerWidth <= 768) {
+                            nav.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
